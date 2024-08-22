@@ -1,0 +1,38 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right,#a882b6,#F0CCFD);
+}
+
+html{
+    overflow-x: hidden;
+}
+
+#logo-name{
+    font-family: Ubuntu;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    margin: 0 5px;
+}
+
+header {
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.log-out-btn {
+    margin-right: 20px;
+}
+
+#form{
+    margin-top: 5rem;
+}
+
+.gradient-text h3{
+    font-family: Ubuntu;
+    font-weight: bold;
+    margin-top: 1rem;
+}

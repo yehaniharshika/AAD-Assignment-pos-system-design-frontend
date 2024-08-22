@@ -1,0 +1,87 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right,#a882b6,#F0CCFD);
+}
+
+html{
+    overflow-x: hidden;
+}
+
+#logo-name{
+    font-family: Ubuntu;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    margin: 0 5px;
+}
+
+header {
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.log-out-btn {
+    margin-right: 20px;
+}
+
+.customer-part>div>h1{
+    margin-top: 8rem;
+    font-weight: bolder;
+}
+
+header{
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#header-text{
+    margin-left: 0;
+    position: relative;
+}
+
+.log-out-btn {
+    margin-right: 20px;
+}
+
+.main-part {
+    position: relative;
+    top: 8rem;
+}
+
+
+.day-text{
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.cus-bar-card{
+    background-color: #F0CCFD;
+}
+
+.bar-chart-style {
+    margin-top: 2rem;
+    padding: 0;
+    position: relative;
+    top: 2rem;
+    left: 1rem;
+}
+
+.animate-photo{
+    margin-top: 8rem;
+    border-radius: 20px;
+}
+.cus-card-style {
+    color: white;
+    font-family: Ubuntu;
+}
+
+.count-card-style {
+    margin-top: 2rem;
+    background-color: #133a75;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}

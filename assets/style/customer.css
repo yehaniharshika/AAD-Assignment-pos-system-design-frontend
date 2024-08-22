@@ -1,0 +1,66 @@
+body{
+    background: linear-gradient(to right,#a882b6,#F0CCFD);
+}
+
+html{
+    overflow-x: hidden;
+}
+
+header {
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.log-out-btn {
+    margin-right: 20px;
+}
+
+#logo-name{
+    font-family: Ubuntu;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    margin: 0 5px;
+}
+
+header {
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.log-out-btn {
+    margin-right: 20px;
+}
+
+.main-part {
+    position: relative;
+    top: 6rem;
+}
+
+.Custom_Search_Customer {
+    margin-top: 0.5rem;
+}
+
+.Customer_Details_Form {
+    margin-top: 0.5rem;
+}
+
+.Customer-Table-View {
+    position: relative;
+    top: 1rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 0;
+}
+
+#Card-Header-back-colour {
+    background: #133a75;
+    color: #eeeeee;
+    font-size: 18px;
+    font-weight: 600;
+}

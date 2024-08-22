@@ -1,0 +1,101 @@
+body{
+    width: 100vw;
+    background: linear-gradient(to right,#a882b6,#F0CCFD);
+}
+
+html{
+    overflow-x: hidden;
+}
+
+#logo-name {
+    color: orangered;
+    margin: 0 5px;
+}
+
+header {
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.log-out-btn {
+    margin-right: 20px;
+}
+
+.main-header {
+    margin: 1rem 0;
+}
+
+
+
+.Card-header-colour {
+    background-color: #133a75;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.Order-Details {
+    margin-top: 1rem;
+}
+
+#purchase-position {
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+#purchase-card {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: #f9f7ff;
+}
+
+.invoice-card form div label{
+    font-weight: 600;
+}
+
+.select-item-card form div label{
+    font-weight: 600;
+}
+
+#sub-total-label {
+    color: red;
+}
+
+#total-label {
+    color: blue;
+}
+
+.Order-Table-View {
+    position: relative;
+    top: 3rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 0;
+
+}
+
+.table-model-style {
+    margin-top: 20px;
+    border: 1px solid darkgray;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+#logo-name{
+    font-family: Ubuntu;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+
+#invoice-details-header{
+    color: white;
+}
+
+.search-order{
+    margin-top: 2rem;
+}
+
