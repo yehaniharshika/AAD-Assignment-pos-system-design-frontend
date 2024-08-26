@@ -1,3 +1,4 @@
+/*
 import { order_db } from "../db/db.js";
 
 export function populateTableOrderDetails() {
@@ -37,3 +38,4 @@ $(document).ready(() => {
     populateTableOrderDetails();
 });
 
+*/

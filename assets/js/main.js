@@ -1,5 +1,5 @@
-import {loadAllCustomerId} from '../controller/orderController.js';
-import {loadAllItemCodes} from '../controller/orderController.js';
+/*import {loadAllCustomerId} from '../controller/orderController.js';
+import {loadAllItemCodes} from '../controller/orderController.js';*/
 
 $('#dashboard-section').css({display: 'block'});
 $('#customer-section').css({display: 'none'});
@@ -41,8 +41,8 @@ $('#nav-orders').on('click', () => {
     $('#item-section').css({display: 'none'});
     $('#order-section').css({display: 'block'});
     $('#order-details-section').css({display: 'none'});
-    loadAllCustomerId();
-    loadAllItemCodes();
+    /*loadAllCustomerId();
+    loadAllItemCodes();*/
 });
 
 // order details nav management

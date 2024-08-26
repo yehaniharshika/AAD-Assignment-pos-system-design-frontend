@@ -1,3 +1,4 @@
+/*
 
 import {item_db} from "../db/db.js";
 import {customer_db} from '../db/db.js';
@@ -17,12 +18,12 @@ let invoiceDeleteBtn=$('#invoice-delete-btn');
 let items = [];
 let resetOrderItemDetails=$('#resetItemDetailsBtn');
 
-/*$('#order-section').on('click', function() {
+/!*$('#order-section').on('click', function() {
     updateItemBtn.prop("disabled", false);
     removeItemBtn.prop("disabled", false);
     invoiceUpdateBtn.prop("disabled", false);
     invoiceDeleteBtn.prop("disabled", false);
-});*/
+});*!/
 
 function fillCurrentDate(){
     $("#order-date").val(new Date().toISOString().slice(0, 10));
@@ -54,7 +55,7 @@ window.addEventListener('load', function() {
     fillCurrentDate();
 });
 
-/* Auto-generate the order ID when navigating to the main section */
+/!* Auto-generate the order ID when navigating to the main section *!/
 function populateOrderIdField() {
     // Check if the input field with ID 'order-id' exists
     const orderIdField = document.getElementById('order-id');
@@ -67,7 +68,7 @@ function populateOrderIdField() {
     }
 }
 
-/*load customers for combo box*/
+/!*load customers for combo box*!/
 export function loadAllCustomerId() {
     console.log('Loading all customer IDs');
     $('#custIdOption').empty(); // Clear existing options
@@ -77,7 +78,7 @@ export function loadAllCustomerId() {
     }
 }
 
-/*set customer details*/
+/!*set customer details*!/
 $('#custIdOption').on('change', function(){
      var selectedCustomerId = $('#custIdOption option:selected').text();
     for (let customerArElement of customer_db) {
@@ -88,7 +89,7 @@ $('#custIdOption').on('change', function(){
     }
 });
 
-/*load item code for combo box*/
+/!*load item code for combo box*!/
 export function loadAllItemCodes(){
     console.log("load all item codes..");
     $('#itemCodeOption').empty();
@@ -99,7 +100,7 @@ export function loadAllItemCodes(){
     }
 }
 
-/*set item details*/
+/!*set item details*!/
 $('#itemCodeOption').on('change', function(){
     var selectedItemCode = $('#itemCodeOption option:selected').text();
     console.log("selectItemCode",selectedItemCode);
@@ -196,7 +197,7 @@ $('#add-to-cart-btn').on('click', function() {
         // Populate the item order table
         populateItemTable();
 
-        /*Reset the item details*/
+        /!*Reset the item details*!/
         resetOrderItemDetails.click();
         // Update the total price
         updateTotal();
@@ -213,9 +214,9 @@ resetOrderItemDetails.on('click', function() {
     $('#set-item-qty-on-hand').val('');
     $('#order-form-get-qty').val('');
 
-    /*$("#update-item-btn").prop("disabled", true);
+    /!*$("#update-item-btn").prop("disabled", true);
     $("#remove-item-btn").prop("disabled",true);
-    $('#add-to-cart-btn').prop("disabled", false);*/
+    $('#add-to-cart-btn').prop("disabled", false);*!/
 });
 
 
@@ -237,9 +238,9 @@ $("#item-order-table").on('click', 'tbody tr', function() {
     $("#set-item-qty-on-hand").val(qtyOnHandValue);
     $("#order-form-get-qty").val(qtyValue);
 
-    /*updateItemBtn.prop("disabled", false);
+    /!*updateItemBtn.prop("disabled", false);
     removeItemBtn.prop("disabled", false);
-    $('#add-to-cart-btn').prop("disabled", true);*/
+    $('#add-to-cart-btn').prop("disabled", true);*!/
 });
 
 function populateItemTable() {
@@ -307,10 +308,10 @@ resetAllButton.on("click", function () {
     $("#set-item-qty-on-hand").val('');
 
 
-    /*clear the items array*/
+    /!*clear the items array*!/
     items = [];
 
-    /*clear the item order table*/
+    /!*clear the item order table*!/
     $("#item-order-table tbody").empty();
 
     // $("#invoice-update-btn").prop("disabled", false);
@@ -441,3 +442,4 @@ function populateItemTableSelectOrderId(items) {
 
 
 
+*/

@@ -1,3 +1,4 @@
+/*
 import {ItemModel} from "../model/ItemModel.js";
 import {customer_db, item_db} from "../db/db.js";
 
@@ -7,7 +8,7 @@ var searchItemIndex = undefined;
 const itemNameRegexPattern = new RegExp("[A-Za-z\\s]{3,}");
 const  qtyOnHandRegexPattern = new RegExp("^\\d+$");
 
-/*save item*/
+/!*save item*!/
 $("#item-save").on('click', () => {
     var itemCode = $('#item-code').val();
     var itemName = $('#item-name').val();
@@ -111,7 +112,7 @@ function generateItemCode() {
     return 'I00-00' + newItemCode;
 }
 
-/*Auto-generate the item code when navigating to the main section*/
+/!*Auto-generate the item code when navigating to the main section*!/
 function populateItemCodeField() {
     const itemCodeField = document.getElementById('item-code');
     const generatedItemCode = generateItemCode();
@@ -123,7 +124,7 @@ window.addEventListener('load', function() {
     populateItemCodeField();
 });
 
-/*update item*/
+/!*update item*!/
 $("#item-update").on('click', () => {
     var itemCode = $('#item-code').val();
     var itemName = $('#item-name').val();
@@ -149,7 +150,7 @@ $("#item-update").on('click', () => {
     populateItemCodeField();
 });
 
-/*delete item*/
+/!*delete item*!/
 $("#item-delete").on('click', () => {
 
     item_db.splice(recordIndex, 1);
@@ -165,7 +166,7 @@ $("#item-delete").on('click', () => {
     populateItemCodeField();
 });
 
-/*search item*/
+/!*search item*!/
 $("#item-search").on('click', () => {
     let itemSearchCode = $("#item-search-code").val();
     let item = item_db.find((item) => item.itemCode === itemSearchCode);
@@ -192,8 +193,9 @@ $("#item-search").on('click', () => {
     }, 2000);
 });
 
-/*$("#item-reset").on('click', () => {
+/!*$("#item-reset").on('click', () => {
     $("#customer-Id").val(generateItemCode());
-});*/
+});*!/
 
 
+*/
