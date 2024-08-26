@@ -188,13 +188,12 @@ function fetchItemData() {
     http.open("GET", "http://localhost:8081/posSystem/item", true);
     http.send();
 }
-/*function loadTable(i) {
+function loadTable(itemData) {
 
     $("#item-tbl-tbody").empty();
 
-    item_db.map((item, index) => {
-        console.log(item);
-
+    itemData.forEach((item) => {
+        
         let record = `<tr>
                 <td class="item-code-value">${item.itemCode}</td>
                 <td class="item-name-value">${item.itemName}</td>
@@ -222,7 +221,7 @@ $("#item-tbl-tbody").on('click', 'tr', function() {
     $("#unit-price").val(unitPrice);
     $("#qty-on-hand").val(qtyOnHand);
 
-});*/
+});
 
 
 
