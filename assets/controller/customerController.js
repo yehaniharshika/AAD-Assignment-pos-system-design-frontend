@@ -257,7 +257,6 @@ $("#customer-delete").on('click', () => {
     http.send();
 }*/
 
-/*
 function loadTable(customerData) {
     $("#customer-tbl-tbody").empty();
 
@@ -272,7 +271,6 @@ function loadTable(customerData) {
         $("#customer-tbl-tbody").append(record);
     });
 }
-*/
 
 /*$("#customer-tbl-tbody").on('click', 'tr', function() {
     let customerId = $(this).find(".customer-id-value").text();
