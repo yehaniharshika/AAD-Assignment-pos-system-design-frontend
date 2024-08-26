@@ -138,7 +138,37 @@ $("#item-update").on('click', () => {
     http.open("PUT", `http://localhost:8081/posSystem/item?itemCode=${itemCodeValue}`, true);
     http.setRequestHeader("content-type", "application/json");
     http.send(itemJson);
+});
 
+$("#item-delete").on('click', () => {
+    var itemCodeValue = $('#item-code').val();
+    console.log("item code: ",itemCodeValue);
+
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if (http.readyState === 4) {
+            if (http.status === 200) {
+                console.log("item deleted successfully");
+                Swal.fire(
+                    'Deleted Successfully!',
+                    'Item deleted successfully.',
+                    'success'
+                );
+                
+            } else {
+                console.log("Failed to delete");
+                console.log("HTTP Status: ", http.status);
+                Swal.fire(
+                    'Failed!',
+                    'Item could not be deleted.',
+                    'error'
+                );
+            }
+        }
+    };
+
+    http.open("DELETE", `http://localhost:8081/posSystem/item?itemCode=${itemCodeValue}`, true);
+    http.send();
 });
 
 /*
