@@ -1,21 +1,14 @@
-/*
-import {ItemModel} from "../model/ItemModel.js";
-import {customer_db, item_db} from "../db/db.js";
-
-var recordIndex;
-var searchItemIndex = undefined;
-
 const itemNameRegexPattern = new RegExp("[A-Za-z\\s]{3,}");
 const  qtyOnHandRegexPattern = new RegExp("^\\d+$");
 
-/!*save item*!/
+/*save item*/
 $("#item-save").on('click', () => {
-    var itemCode = $('#item-code').val();
-    var itemName = $('#item-name').val();
-    var unitPrice = $('#unit-price').val();
-    var qtyOnHand = $('#qty-on-hand').val();
+    var itemCodeValue = $('#item-code').val();
+    var itemNameValue = $('#item-name').val();
+    var unitPriceValue = $('#unit-price').val();
+    var qtyOnHandValue = $('#qty-on-hand').val();
 
-    if (!itemNameRegexPattern.test(itemName)){
+    if (!itemNameRegexPattern.test(itemNameValue)){
         Swal.fire({
             icon: 'error',
             title: 'Invalid item name',
@@ -24,7 +17,7 @@ $("#item-save").on('click', () => {
         return;
     }
 
-    if (!qtyOnHandRegexPattern.test(qtyOnHand)){
+    if (!qtyOnHandRegexPattern.test(qtyOnHandValue)){
         Swal.fire({
             icon: 'error',
             title: 'Invalid item QtyOnHand',
@@ -33,28 +26,57 @@ $("#item-save").on('click', () => {
         return;
     }
 
+    console.log("item code: ",itemCodeValue);
+    console.log("item name: ",itemNameValue);
+    console.log("unit price: ",unitPriceValue);
+    console.log("qty on hand: ",qtyOnHandValue);
 
-    let item = new ItemModel(
-        itemCode,
-        itemName,
-        unitPrice,
-        qtyOnHand
-    );
 
-    Swal.fire(
-        'Save Successfully!',
-        'Item saved successfully.',
-        'success'
-    );
+    const itemData={
+        itemCode : itemCodeValue,
+        itemName : itemNameValue,
+        unitPrice : unitPriceValue,
+        qtyOnHand : qtyOnHandValue
+    }
 
-    // push to the array
-    item_db.push(item);
+    console.log(itemData);
 
-    loadTable();
-    $("#item-reset").click();
-    populateItemCodeField();
+    const itemJson = JSON.stringify(itemData);
+    console.log("itemJson",itemJson);
+
+    const http = new XMLHttpRequest();
+    http.onreadystatechange=()=> {
+        //check state
+        if (http.readyState === 4) {
+            if (http.status === 200 || http.status === 204 || http.status === 201){
+                var jsonTypeResponse = JSON.stringify(http.responseText);
+                console.log(jsonTypeResponse);
+                Swal.fire(
+                    'Save Successfully!',
+                    'Item saved successfully.',
+                    'success'
+                );
+                // fetchCustomerData();
+                // clearFields();
+                // console.log("load tables saved click");
+            } else {
+                console.log("failed");
+                console.log(http.status)
+                console.log("readyState")
+                console.log("------------------------------------------------------------------")
+            }
+        }else {
+
+        }
+    }
+    http.open("POST","http://localhost:8081/posSystem/item",true);
+    http.setRequestHeader("content-type","application/json");
+    http.send(itemJson);
 });
 
+
+
+/*
 function loadTable() {
 
     $("#item-tbl-tbody").empty();
@@ -71,8 +93,9 @@ function loadTable() {
         $("#item-tbl-tbody").append(record);
     });
 }
+*/
 
-$("#item-tbl-tbody").on('click', 'tr', function() {
+/*$("#item-tbl-tbody").on('click', 'tr', function() {
     let index = $(this).index();
     recordIndex = index;
 
@@ -88,10 +111,10 @@ $("#item-tbl-tbody").on('click', 'tr', function() {
     $("#unit-price").val(unitPrice);
     $("#qty-on-hand").val(qtyOnHand);
 
-});
+});*/
 
 
-function generateItemCode() {
+/*function generateItemCode() {
     let highestItemCode = 0;
 
     // Find the highest numeric part of existing customer IDs
@@ -110,8 +133,9 @@ function generateItemCode() {
 
     // Return the generated customer ID
     return 'I00-00' + newItemCode;
-}
+}*/
 
+/*
 /!*Auto-generate the item code when navigating to the main section*!/
 function populateItemCodeField() {
     const itemCodeField = document.getElementById('item-code');
@@ -196,6 +220,5 @@ $("#item-search").on('click', () => {
 /!*$("#item-reset").on('click', () => {
     $("#customer-Id").val(generateItemCode());
 });*!/
-
 
 */

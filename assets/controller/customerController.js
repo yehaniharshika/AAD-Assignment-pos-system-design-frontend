@@ -317,6 +317,14 @@ $("#customer-search").on('click', () => {
                     'Customer details retrieved successfully.',
                     'success'
                 );
+
+                setTimeout(() =>{
+                    $("#customer-Id").val('');
+                    $("#customer-name").val('');
+                    $("#customer-address").val('');
+                    $("#contact-number").val('');
+                    $("#email").val('');
+                },6000);
             } else {
                 console.log("Failed to find customer");
                 console.log("HTTP Status: ", http.status);
@@ -342,114 +350,6 @@ $("#customer-search").on('click', () => {
 });
 
 
-/*load customer for table*/
-/*function loadTable() {
-    $("#customer-tbl-tbody").empty();
-
-    customer_db.map((item, index) => {
-        console.log(item);
-
-        let record = `<tr>
-                <td class="customer-id-value">${item.customerId}</td>
-                <td class="customer-name-value">${item.name}</td>
-                <td class="customer-address-value">${item.address}</td>
-                <td class="customer-contact-value">${item.contactNumber}</td>
-                <td class="customer-email-value">${item.email}</td>
-            </tr>`;
-        $("#customer-tbl-tbody").append(record);
-    });
-}
-
-
-$("#customer-tbl-tbody").on('click', 'tr', function() {
-    let index = $(this).index();
-    recordIndex = index;
-
-    console.log("index: ", index);
-
-    let customerId = $(this).find(".customer-id-value").text();
-    let name = $(this).find(".customer-name-value").text();
-    let address = $(this).find(".customer-address-value").text();
-    let contactNumber = $(this).find(".customer-contact-value").text();
-    let email = $(this).find(".customer-email-value").text();
-
-    $("#customer-Id").val(customerId);
-    $("#customer-name").val(name);
-    $("#customer-address").val(address);
-    $("#contact-number").val(contactNumber);
-    $("#email").val(email);
-
-});*/
-
-
-/*
-function generateCustomerId() {
-    let highestCustomerId = 0;
-
-    // Find the highest numeric part of existing customer IDs
-    for (let i = 0; i < customer_db.length; i++) {
-        const numericPart = parseInt(customer_db[i].customerId.split('-')[1]);
-        if (!isNaN(numericPart) && numericPart > highestCustomerId) {
-            highestCustomerId = numericPart;
-        }
-    }
-
-    // Generate a new customer ID by incrementing the highest numeric part
-    const newCustomerId = highestCustomerId + 1;
-
-    // Insert the new customer ID into the #customer-id text field
-    $('#customer-id').val('C00-00' + newCustomerId);
-
-    // Return the generated customer ID
-    return 'C00-00' + newCustomerId;
-}
-
-/!*Auto-generate the customer ID when navigating to the main section*!/
-function populateCustomerIdField() {
-    const customerIdField = document.getElementById('customer-Id');
-    const generatedCustomerId = generateCustomerId();
-    customerIdField.value = generatedCustomerId;
-}
-
-// Event listener for when the page loads
-window.addEventListener('load', function() {
-    // Call the function to populate the customer ID field
-    populateCustomerIdField();
-});
-
-
-
-*/
-
-
-/*
-
-$("#customer-search").on('click', () => {
-    let customerSearchId = $("#customer-search-by-id").val();
-    let item =customer_db.find((item) => item.customerId === customerSearchId);
-
-    if (item) {
-        $("#customer-Id").val(item.customerId);
-        $("#customer-name").val(item.name);
-        $("#customer-address").val(item.address);
-        $("#contact-number").val(item.contactNumber);
-        $("#email").val(item.email);
-    } else {
-        Swal.fire(
-            'not found!',
-            'customer not found..'
-        );
-    }
-
-    $("#customer-search-by-id").val("");
-    setTimeout(() => {
-        populateCustomerIdField()
-        $("#customer-name").val("");
-        $("#customer-address").val("");
-        $("#contact-number").val("");
-        $("#email").val("");
-    }, 2000);
-});*/
 
 function clearFields(){
     $("#customer-Id").val("");
