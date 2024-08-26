@@ -154,7 +154,7 @@ $("#item-delete").on('click', () => {
                     'Item deleted successfully.',
                     'success'
                 );
-                
+
             } else {
                 console.log("Failed to delete");
                 console.log("HTTP Status: ", http.status);
@@ -171,8 +171,24 @@ $("#item-delete").on('click', () => {
     http.send();
 });
 
-/*
-function loadTable() {
+
+function fetchItemData() {
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if (http.readyState === 4) {
+            if (http.status === 200) {
+                // Parse the response JSON and update the table
+                const itemData = JSON.parse(http.responseText);
+                loadTable(itemData);
+            } else {
+                console.log("Failed to fetch customer data");
+            }
+        }
+    };
+    http.open("GET", "http://localhost:8081/posSystem/item", true);
+    http.send();
+}
+/*function loadTable(i) {
 
     $("#item-tbl-tbody").empty();
 
@@ -188,9 +204,9 @@ function loadTable() {
         $("#item-tbl-tbody").append(record);
     });
 }
-*/
 
-/*$("#item-tbl-tbody").on('click', 'tr', function() {
+
+$("#item-tbl-tbody").on('click', 'tr', function() {
     let index = $(this).index();
     recordIndex = index;
 
@@ -207,6 +223,7 @@ function loadTable() {
     $("#qty-on-hand").val(qtyOnHand);
 
 });*/
+
 
 
 /*function generateItemCode() {
