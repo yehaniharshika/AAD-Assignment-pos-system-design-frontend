@@ -207,7 +207,7 @@ $("#customer-update").on('click', () => {
 
 });
 
-/*/!*delete customer*!/
+/*delete customer*/
 $("#customer-delete").on('click', () => {
     var customerIdValue = $('#customer-Id').val();
 
@@ -240,7 +240,7 @@ $("#customer-delete").on('click', () => {
     http.send();
 });
 
-function fetchCustomerData() {
+/*function fetchCustomerData() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4) {
@@ -255,8 +255,9 @@ function fetchCustomerData() {
     };
     http.open("GET", "http://localhost:8081/posSystem/customer", true);
     http.send();
-}
+}*/
 
+/*
 function loadTable(customerData) {
     $("#customer-tbl-tbody").empty();
 
@@ -271,8 +272,9 @@ function loadTable(customerData) {
         $("#customer-tbl-tbody").append(record);
     });
 }
+*/
 
-$("#customer-tbl-tbody").on('click', 'tr', function() {
+/*$("#customer-tbl-tbody").on('click', 'tr', function() {
     let customerId = $(this).find(".customer-id-value").text();
     let name = $(this).find(".customer-name-value").text();
     let address = $(this).find(".customer-address-value").text();
@@ -284,9 +286,9 @@ $("#customer-tbl-tbody").on('click', 'tr', function() {
     $("#customer-address").val(address);
     $("#contact-number").val(contactNumber);
     $("#email").val(email);
-});
+});*/
 
-$("#customer-search").on('click', () => {
+/*$("#customer-search").on('click', () => {
     let customerSearchId = $("#customer-search-by-id").val();
 
     if (!customerSearchId) {
