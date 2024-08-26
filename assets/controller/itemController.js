@@ -193,7 +193,7 @@ function loadTable(itemData) {
     $("#item-tbl-tbody").empty();
 
     itemData.forEach((item) => {
-        
+
         let record = `<tr>
                 <td class="item-code-value">${item.itemCode}</td>
                 <td class="item-name-value">${item.itemName}</td>
@@ -206,11 +206,6 @@ function loadTable(itemData) {
 
 
 $("#item-tbl-tbody").on('click', 'tr', function() {
-    let index = $(this).index();
-    recordIndex = index;
-
-    console.log("index: ", index);
-
     let itemCode = $(this).find(".item-code-value").text();
     let itemName = $(this).find(".item-name-value").text();
     let unitPrice = $(this).find(".item-unitPrice-value").text();
