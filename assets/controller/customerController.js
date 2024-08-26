@@ -288,7 +288,7 @@ function loadTable(customerData) {
     $("#email").val(email);
 });*/
 
-/*$("#customer-search").on('click', () => {
+$("#customer-search").on('click', () => {
     let customerSearchId = $("#customer-search-by-id").val();
 
     if (!customerSearchId) {
@@ -341,7 +341,7 @@ function loadTable(customerData) {
 
     http.open("GET", `http://localhost:8081/posSystem/customer?customerId=${customerSearchId}`, true);
     http.send();
-});*/
+});
 
 
 /*load customer for table*/
