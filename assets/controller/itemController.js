@@ -1,6 +1,10 @@
 const itemNameRegexPattern = new RegExp("[A-Za-z\\s]{3,}");
 const  qtyOnHandRegexPattern = new RegExp("^\\d+$");
 
+window.addEventListener('load', () => {
+    /* generateCustomerId();*/
+    fetchItemData();
+});
 /*save item*/
 $("#item-save").on('click', () => {
     var itemCodeValue = $('#item-code').val();
@@ -56,7 +60,7 @@ $("#item-save").on('click', () => {
                     'Item saved successfully.',
                     'success'
                 );
-                // fetchCustomerData();
+                fetchItemData();
                 // clearFields();
                 // console.log("load tables saved click");
             } else {
@@ -126,7 +130,7 @@ $("#item-update").on('click', () => {
                     'Item updated successfully.',
                     'success'
                 )
-
+                fetchItemData();
             } else {
                 console.log("Failed to update");
                 console.log("HTTP Status: ", http.status);
@@ -154,7 +158,7 @@ $("#item-delete").on('click', () => {
                     'Item deleted successfully.',
                     'success'
                 );
-
+                fetchItemData();
             } else {
                 console.log("Failed to delete");
                 console.log("HTTP Status: ", http.status);
@@ -218,7 +222,65 @@ $("#item-tbl-tbody").on('click', 'tr', function() {
 
 });
 
+/*search item*/
+$("#item-search").on('click', () => {
+    let itemSearchCode = $("#item-search-code").val();
 
+    if (!itemSearchCode) {
+        Swal.fire(
+            'Input Required',
+            'Please enter a item code to search.',
+            'warning'
+        );
+        return;
+    }
+    console.log("Searching for Item code", itemSearchCode);
+
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if (http.readyState === 4) {
+            if (http.status === 200) {
+                const item = JSON.parse(http.responseText);
+
+                $("#item-code").val(item.itemCode);
+                $("#item-name").val(item.itemName);
+                $("#unit-price").val(item.unitPrice);
+                $("#qty-on-hand").val(item.qtyOnHand);
+
+                Swal.fire(
+                    'Item Found!',
+                    'Item details retrieved successfully.',
+                    'success'
+                );
+
+                setTimeout(() =>{
+                    $("#item-code").val('');
+                    $("#item-name").val('');
+                    $("#unit-price").val('');
+                    $("#qty-on-hand").val('');
+                },6000);
+            } else {
+                console.log("Failed to find item");
+                console.log("HTTP Status: ", http.status);
+
+                Swal.fire(
+                    'Not Found!',
+                    'Item not found.',
+                    'error'
+                );
+
+                // Clear the fields if item not found
+                $("#item-code").val('');
+                $("#item-name").val('');
+                $("#unit-price").val('');
+                $("#qty-on-hand").val('');
+            }
+        }
+    };
+
+    http.open("GET", `http://localhost:8081/posSystem/item?itemCode=${itemSearchCode}`, true);
+    http.send();
+});
 
 /*function generateItemCode() {
     let highestItemCode = 0;
@@ -256,51 +318,5 @@ window.addEventListener('load', function() {
 
 
 
-/*/!*delete item*!/
-$("#item-delete").on('click', () => {
-
-    item_db.splice(recordIndex, 1);
-
-    Swal.fire(
-        'delete Successfully !',
-        'Item deleted successfully.',
-        'success'
-    )
-
-    loadTable();
-    $("#item-reset").click();
-    populateItemCodeField();
-});
-
-/!*search item*!/
-$("#item-search").on('click', () => {
-    let itemSearchCode = $("#item-search-code").val();
-    let item = item_db.find((item) => item.itemCode === itemSearchCode);
-
-    if (item) {
-        $("#item-code").val(item.itemCode);
-        $("#item-name").val(item.itemName);
-        $("#unit-price").val(item.unitPrice);
-        $("#qty-on-hand").val(item.qtyOnHand);
-    } else {
-        Swal.fire(
-            'not found!',
-            'item not found..'
-        );
-    }
-
-    $("#item-search-code").val("");
-    //delay the generation of the next item code by 2 seconds (2000 milliseconds)
-    setTimeout(() => {
-        populateItemCodeField();
-        $("#item-name").val("");
-        $("#unit-price").val("");
-        $("#qty-on-hand").val("");
-    }, 2000);
-});
-
-/!*$("#item-reset").on('click', () => {
-    $("#customer-Id").val(generateItemCode());
-});*/
 
 
