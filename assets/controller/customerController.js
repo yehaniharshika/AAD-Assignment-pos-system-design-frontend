@@ -240,7 +240,7 @@ $("#customer-delete").on('click', () => {
     http.send();
 });
 
-/*function fetchCustomerData() {
+function fetchCustomerData() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4) {
@@ -255,7 +255,7 @@ $("#customer-delete").on('click', () => {
     };
     http.open("GET", "http://localhost:8081/posSystem/customer", true);
     http.send();
-}*/
+}
 
 function loadTable(customerData) {
     $("#customer-tbl-tbody").empty();
