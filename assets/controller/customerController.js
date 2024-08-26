@@ -116,7 +116,7 @@ $("#customer-save").click(function (){
     http.send(customerJson);
 });
 
-/*/!*update customer*!/
+/*update customer*/
 $("#customer-update").on('click', () => {
     var customerIdValue = $('#customer-Id').val();
     var customerNameValue = $('#customer-name').val();
@@ -207,7 +207,7 @@ $("#customer-update").on('click', () => {
 
 });
 
-/!*delete customer*!/
+/*/!*delete customer*!/
 $("#customer-delete").on('click', () => {
     var customerIdValue = $('#customer-Id').val();
 
