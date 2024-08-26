@@ -272,7 +272,7 @@ function loadTable(customerData) {
     });
 }
 
-/*$("#customer-tbl-tbody").on('click', 'tr', function() {
+$("#customer-tbl-tbody").on('click', 'tr', function() {
     let customerId = $(this).find(".customer-id-value").text();
     let name = $(this).find(".customer-name-value").text();
     let address = $(this).find(".customer-address-value").text();
@@ -284,7 +284,7 @@ function loadTable(customerData) {
     $("#customer-address").val(address);
     $("#contact-number").val(contactNumber);
     $("#email").val(email);
-});*/
+});
 
 $("#customer-search").on('click', () => {
     let customerSearchId = $("#customer-search-by-id").val();
