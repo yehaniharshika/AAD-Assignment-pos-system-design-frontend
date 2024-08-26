@@ -74,7 +74,72 @@ $("#item-save").on('click', () => {
     http.send(itemJson);
 });
 
+/*update item*/
+$("#item-update").on('click', () => {
+    var itemCodeValue = $('#item-code').val();
+    var itemNameValue = $('#item-name').val();
+    var unitPriceValue = $('#unit-price').val();
+    var qtyOnHandValue = $('#qty-on-hand').val();
 
+    if (!itemNameRegexPattern.test(itemNameValue)){
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid item name',
+            text: 'only letters allowed'
+        })
+        return;
+    }
+
+    if (!qtyOnHandRegexPattern.test(qtyOnHandValue)){
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid item QtyOnHand',
+            text: 'only numbers allowed'
+        })
+        return;
+    }
+
+    console.log("item code: ",itemCodeValue);
+    console.log("item name: ",itemNameValue);
+    console.log("unit price: ",unitPriceValue);
+    console.log("qty on hand: ",qtyOnHandValue);
+
+
+    const itemData={
+        itemCode : itemCodeValue,
+        itemName : itemNameValue,
+        unitPrice : unitPriceValue,
+        qtyOnHand : qtyOnHandValue
+    }
+
+    const itemJson = JSON.stringify(itemData);
+
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if (http.readyState === 4) {
+            if (http.status === 200 || http.status === 204) {
+                var jsonTypeResponse = JSON.stringify(http.responseText);
+                console.log("jsonTypeResponse ", jsonTypeResponse);
+                console.log("------------------------------------------------------------------")
+                Swal.fire(
+                    'Update Successfully !',
+                    'Item updated successfully.',
+                    'success'
+                )
+
+            } else {
+                console.log("Failed to update");
+                console.log("HTTP Status: ", http.status);
+                console.log("Ready State: ", http.readyState);
+                console.log("------------------------------------------------------------------")
+            }
+        }
+    };
+    http.open("PUT", `http://localhost:8081/posSystem/item?itemCode=${itemCodeValue}`, true);
+    http.setRequestHeader("content-type", "application/json");
+    http.send(itemJson);
+
+});
 
 /*
 function loadTable() {
@@ -135,8 +200,8 @@ function loadTable() {
     return 'I00-00' + newItemCode;
 }*/
 
-/*
-/!*Auto-generate the item code when navigating to the main section*!/
+
+/*/!*Auto-generate the item code when navigating to the main section*!/
 function populateItemCodeField() {
     const itemCodeField = document.getElementById('item-code');
     const generatedItemCode = generateItemCode();
@@ -146,35 +211,11 @@ function populateItemCodeField() {
 // Event listener for when the page loads
 window.addEventListener('load', function() {
     populateItemCodeField();
-});
-
-/!*update item*!/
-$("#item-update").on('click', () => {
-    var itemCode = $('#item-code').val();
-    var itemName = $('#item-name').val();
-    var itemUnitPrice = $('#unit-price').val();
-    var itemQtyOnHand = $('#qty-on-hand').val();
+});*/
 
 
-    let itemObj = item_db[recordIndex];
 
-    itemObj.itemCode = itemCode;
-    itemObj.itemName = itemName;
-    itemObj.unitPrice = itemUnitPrice;
-    itemObj.qtyOnHand = itemQtyOnHand;
-
-    Swal.fire(
-        'Update Successfully !',
-        'item updated successfully.',
-        'success'
-    )
-
-    loadTable();
-    $("#item-reset").click();
-    populateItemCodeField();
-});
-
-/!*delete item*!/
+/*/!*delete item*!/
 $("#item-delete").on('click', () => {
 
     item_db.splice(recordIndex, 1);
@@ -219,6 +260,6 @@ $("#item-search").on('click', () => {
 
 /!*$("#item-reset").on('click', () => {
     $("#customer-Id").val(generateItemCode());
-});*!/
+});*/
 
-*/
+
