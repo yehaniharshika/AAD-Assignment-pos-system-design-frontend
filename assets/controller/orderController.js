@@ -7,6 +7,7 @@ window.addEventListener('load', () => {
     loadItemCodes();
     setOrderDate();
     fetchOrderId();
+    fetchOrderData();
 });
 
 function setOrderDate() {
@@ -240,10 +241,50 @@ document.getElementById('btn-purchase').addEventListener('click', function() {
                 'success'
             );
             console.log("order success");
+            fetchOrderData();
+            console.log("fetch data");
             // Optionally reset form or perform other actions
         })
         .catch(error => console.error('Error:', error));
+
+
 });
+
+/*function fetchOrderData() {
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if (http.readyState === 4) {
+            if (http.status === 200) {
+                // Parse the response JSON and update the table
+                const orderData = JSON.parse(http.responseText);
+                loadTable(orderData);
+            } else {
+                console.log("Failed to fetch order data");
+            }
+        }
+    };
+    http.open("GET", "http://localhost:8081/posSystem/order", true);
+    http.send();
+}*/
+
+function loadTable(orderData) {
+    const tbody = $("#item-details-table tbody");
+    tbody.empty();
+
+    orderData.forEach((order) => {
+        let record = `<tr>
+            <td>${order.orderId}</td>
+            <td>${order.orderDate}</td>
+            <td>${order.customerId}</td>
+            <td>${order.total}</td>
+            <td>${order.discount}</td>
+            <td>${order.subTotal}</td>
+            <td>${order.cash}</td>
+            <td>${order.balance}</td>
+        </tr>`;
+        tbody.append(record);
+    });
+}
 
 
 
