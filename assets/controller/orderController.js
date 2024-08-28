@@ -130,7 +130,7 @@ document.getElementById('add-to-cart-btn').addEventListener('click', function() 
 });
 
 
-/*function populateItemTable() {
+function populateItemTable() {
     const tbody = $('#item-order-table tbody');
     tbody.empty();
 
@@ -146,9 +146,9 @@ document.getElementById('add-to-cart-btn').addEventListener('click', function() 
             </tr>
         `);
     });
-}*/
+}
 
-function updateTotal() {
+/*function updateTotal() {
     let totalVal = 0;
     items.forEach(item => {
         totalVal += item.total
@@ -156,7 +156,7 @@ function updateTotal() {
 
     $('#total').val(totalVal.toFixed(2));
     updateSubTotal();
-}
+}*/
 
 // function updateSubTotal() {
 //     const total = parseFloat($('#total').val()) || 0;
