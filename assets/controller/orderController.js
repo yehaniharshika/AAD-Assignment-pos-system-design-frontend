@@ -186,7 +186,7 @@ document.getElementById('item-order-table').addEventListener('click', function(e
         document.getElementById('order-form-get-qty').value = cells[4].textContent;
     }
 });
-/*
+
 document.getElementById('remove-item-btn').addEventListener('click', function() {
     const itemCode = document.getElementById('itemCodeOption').value;
     if (itemCode) {
@@ -203,7 +203,7 @@ document.getElementById('remove-item-btn').addEventListener('click', function() 
     }
 });
 
-document.getElementById('btn-purchase').addEventListener('click', function() {
+/*document.getElementById('btn-purchase').addEventListener('click', function() {
     const orderId = document.getElementById('order-id').value;
     const orderDate = document.getElementById('order-date').value;
     const customerId = document.getElementById('custIdOption').value;
