@@ -39,7 +39,7 @@ function loadItemCodes() {
     http.send();
 }
 
-/*document.getElementById('itemCodeOption').addEventListener('change', function() {
+document.getElementById('itemCodeOption').addEventListener('change', function() {
     const selectedItemCode = this.value;
     const selectedItem = itemData.find(item => item.itemCode === selectedItemCode);
 
@@ -50,7 +50,7 @@ function loadItemCodes() {
     }
 });
 
-function loadCustomerIDs() {
+/*function loadCustomerIDs() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
