@@ -234,7 +234,12 @@ document.getElementById('btn-purchase').addEventListener('click', function() {
     })
         .then(response => response.text())
         .then(message => {
-            alert(message);
+            Swal.fire(
+                'Save Successfully!',
+                'Customer saved successfully.',
+                'success'
+            );
+            console.log("order success");
             // Optionally reset form or perform other actions
         })
         .catch(error => console.error('Error:', error));
