@@ -203,7 +203,7 @@ document.getElementById('remove-item-btn').addEventListener('click', function() 
     }
 });
 
-/*document.getElementById('btn-purchase').addEventListener('click', function() {
+document.getElementById('btn-purchase').addEventListener('click', function() {
     const orderId = document.getElementById('order-id').value;
     const orderDate = document.getElementById('order-date').value;
     const customerId = document.getElementById('custIdOption').value;
@@ -238,7 +238,7 @@ document.getElementById('remove-item-btn').addEventListener('click', function() 
             // Optionally reset form or perform other actions
         })
         .catch(error => console.error('Error:', error));
-});*/
+});
 
 
 
