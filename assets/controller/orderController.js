@@ -148,7 +148,7 @@ function populateItemTable() {
     });
 }
 
-/*function updateTotal() {
+function updateTotal() {
     let totalVal = 0;
     items.forEach(item => {
         totalVal += item.total
@@ -156,7 +156,7 @@ function populateItemTable() {
 
     $('#total').val(totalVal.toFixed(2));
     updateSubTotal();
-}*/
+}
 
 // function updateSubTotal() {
 //     const total = parseFloat($('#total').val()) || 0;
