@@ -242,14 +242,26 @@ document.getElementById('btn-purchase').addEventListener('click', function() {
             );
             console.log("order success");
             fetchOrderData();
+            clearFields();
+            fetchOrderId();
             console.log("fetch data");
             // Optionally reset form or perform other actions
         })
         .catch(error => console.error('Error:', error));
-
-
 });
 
+function clearFields() {
+    $("#order-id").val('');
+    $("#total").val('');
+    $("#discount").val('');
+    $("#cash").val('');
+    $("#sub-total").val('');
+    $("#set-customer-name").val('');
+    $("#set-customer-email").val('');
+    $("#set-order-form-item-name").val('');
+    $("#set-order-form-item-price").val('');
+    $("#set-item-qty-on-hand").val('');
+}
 function fetchOrderData() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
