@@ -24,221 +24,221 @@ function fetchOrderId() {
         .catch(error => console.error("Error fetching order ID:", error));
 }
 
-// function loadItemCodes() {
-//     const http = new XMLHttpRequest();
-//     http.onreadystatechange = () => {
-//         if (http.readyState === 4 && http.status === 200) {
-//             itemData = JSON.parse(http.responseText);
-//             itemData.forEach((item) => {
-//                 $("#itemCodeOption").append(new Option(item.itemCode, item.itemCode));
-//                 console.log("Successfully loaded item codes");
-//             });
-//         }
-//     };
-//     http.open("GET", "http://localhost:8081/posSystem/item", true);
-//     http.send();
-// }
-//
-// document.getElementById('itemCodeOption').addEventListener('change', function() {
-//     const selectedItemCode = this.value;
-//     const selectedItem = itemData.find(item => item.itemCode === selectedItemCode);
-//
-//     if (selectedItem) {
-//         document.getElementById('set-order-form-item-name').value = selectedItem.itemName;
-//         document.getElementById('set-order-form-item-price').value = selectedItem.unitPrice;
-//         document.getElementById('set-item-qty-on-hand').value = selectedItem.qtyOnHand;
-//     }
-// });
-//
-// function loadCustomerIDs() {
-//     const http = new XMLHttpRequest();
-//     http.onreadystatechange = () => {
-//         if (http.readyState === 4 && http.status === 200) {
-//             customerData = JSON.parse(http.responseText);
-//             customerData.forEach((customer) => {
-//                 $("#custIdOption").append(new Option(customer.customerId, customer.customerId));
-//                 console.log("Successfully loaded customer IDs");
-//             });
-//         }
-//     };
-//     http.open("GET", "http://localhost:8081/posSystem/customer", true);
-//     http.send();
-// }
-//
-// document.getElementById('custIdOption').addEventListener('change', function() {
-//     const selectedCustomerId = this.value;
-//     const selectedCustomer = customerData.find(customer => customer.customerId === selectedCustomerId);
-//
-//     if (selectedCustomer) {
-//         document.getElementById('set-customer-name').value = selectedCustomer.name;
-//         document.getElementById('set-customer-email').value = selectedCustomer.email;
-//     }
-// });
-//
-// document.getElementById('add-to-cart-btn').addEventListener('click', function() {
-//     const itemCode = document.getElementById('itemCodeOption').value;
-//     const itemName = document.getElementById('set-order-form-item-name').value;
-//     const itemPrice = parseFloat(document.getElementById('set-order-form-item-price').value); // changed from unitPrice to itemPrice
-//     const qtyOnHand = parseInt(document.getElementById('set-item-qty-on-hand').value, 10);
-//     const qty = parseInt(document.getElementById('order-form-get-qty').value, 10);
-//
-//     // Ensure all values are defined and valid before proceeding
-//     if (!itemCode || !itemName || isNaN(itemPrice) || isNaN(qty) || qty <= 0 || qty > qtyOnHand) {
-//         alert('Please fill in all fields correctly and ensure quantity is within stock.');
-//         return;
-//     }
-//
-//     const total = (itemPrice * qty).toFixed(2);
-//
-//     const xhr = new XMLHttpRequest();
-//     xhr.onreadystatechange = function() {
-//         if (xhr.readyState === XMLHttpRequest.DONE) {
-//             if (xhr.status === 200) {
-//                 console.log('Item quantity updated successfully in the database');
-//
-//                 items.push({
-//                     itemCode: itemCode,
-//                     itemName: itemName,
-//                     price: itemPrice, // changed from unitPrice to itemPrice
-//                     qtyOnHand: qtyOnHand - qty,
-//                     qty: qty,
-//                     total: parseFloat(total)
-//                 });
-//
-//                 const itemIndex = itemData.findIndex(item => item.itemCode === itemCode);
-//                 if (itemIndex !== -1) {
-//                     itemData[itemIndex].qtyOnHand -= qty;
-//                 }
-//
-//                 populateItemTable();
-//                 document.querySelector('form').reset();
-//                 document.getElementById('itemCodeOption').focus();
-//                 updateTotal();
-//             } else {
-//                 alert('Failed to update item quantity in the database');
-//             }
-//         }
-//     };
-//
-//     xhr.open("PUT", `http://localhost:8081/posSystem/item?itemCode=${itemCode}`, true);
-//     xhr.setRequestHeader('Content-Type', 'application/json');
-//     xhr.send(JSON.stringify({
-//         qtyOnHand: qtyOnHand - qty,
-//         itemName: itemName,
-//         unitPrice: itemPrice // changed from unitPrice to itemPrice
-//     }));
-// });
-//
-//
-// function populateItemTable() {
-//     const tbody = $('#item-order-table tbody');
-//     tbody.empty();
-//
-//     items.forEach(item => {
-//         tbody.append(`
-//             <tr>
-//                 <td>${item.itemCode}</td>
-//                 <td>${item.itemName}</td>
-//                 <td>${item.price.toFixed(2)}</td>
-//                 <td>${item.qtyOnHand}</td>
-//                 <td>${item.qty}</td>
-//                 <td>${item.total.toFixed(2)}</td>
-//             </tr>
-//         `);
-//     });
-// }
-//
-// function updateTotal() {
-//     let totalVal = 0;
-//     items.forEach(item => {
-//         totalVal += item.total
-//     });
-//
-//     $('#total').val(totalVal.toFixed(2));
-//     updateSubTotal();
-// }
-//
-// function updateSubTotal() {
-//     const total = parseFloat($('#total').val()) || 0;
-//     const discount = parseFloat($('#discount').val()) || 0;
-//     const subTotal = total - (total * discount / 100);
-//     $('#sub-total').val(subTotal.toFixed(2));
-// }
-//
-// $('#discount').on('input', updateSubTotal);
-//
-// $('#cash').on('input', function() {
-//     const subTotal = parseFloat($('#sub-total').val()) || 0;
-//     const cash = parseFloat($(this).val()) || 0;
-//     const balance = cash - subTotal;
-//     $('#balance').val(balance.toFixed(2));
-// });
-//
-// document.getElementById('item-order-table').addEventListener('click', function(e) {
-//     if (e.target && e.target.matches('tr')) {
-//         const row = e.target;
-//         const cells = row.getElementsByTagName('td');
-//
-//         document.getElementById('itemCodeOption').value = cells[0].textContent;
-//         document.getElementById('set-order-form-item-name').value = cells[1].textContent;
-//         document.getElementById('set-order-form-item-price').value = cells[2].textContent;
-//         document.getElementById('set-item-qty-on-hand').value = cells[3].textContent;
-//         document.getElementById('order-form-get-qty').value = cells[4].textContent;
-//     }
-// });
-//
-// document.getElementById('remove-item-btn').addEventListener('click', function() {
-//     const itemCode = document.getElementById('itemCodeOption').value;
-//     if (itemCode) {
-//         const itemIndex = items.findIndex(item => item.itemCode === itemCode);
-//         if (itemIndex !== -1) {
-//             const removedItem = items.splice(itemIndex, 1)[0];
-//             const itemInData = itemData.find(item => item.itemCode === removedItem.itemCode);
-//             if (itemInData) {
-//                 itemInData.qtyOnHand += removedItem.qty;
-//             }
-//             populateItemTable();
-//             updateTotal();
-//         }
-//     }
-// });
-//
-// document.getElementById('btn-purchase').addEventListener('click', function() {
-//     const orderId = document.getElementById('order-id').value;
-//     const orderDate = document.getElementById('order-date').value;
-//     const customerId = document.getElementById('custIdOption').value;
-//     const discount = parseFloat(document.getElementById('discount').value) || 0;
-//     const cash = parseFloat(document.getElementById('cash').value) || 0;
-//     const total = parseFloat(document.getElementById('total').value) || 0;
-//     const subTotal = parseFloat(document.getElementById('sub-total').value) || 0;
-//     const balance = parseFloat(document.getElementById('balance').value) || 0;
-//
-//     const orderData = {
-//         orderId: orderId,
-//         orderDate: orderDate,
-//         customerId: customerId,
-//         discount: discount,
-//         cash: cash,
-//         total: total,
-//         subTotal: subTotal,
-//         balance: balance,
-//         items: items
-//     };
-//
-//     fetch('http://localhost:8081/posSystem/order', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(orderData)
-//     })
-//         .then(response => response.text())
-//         .then(message => {
-//             alert(message);
-//             // Optionally reset form or perform other actions
-//         })
-//         .catch(error => console.error('Error:', error));
-// });
+function loadItemCodes() {
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if (http.readyState === 4 && http.status === 200) {
+            itemData = JSON.parse(http.responseText);
+            itemData.forEach((item) => {
+                $("#itemCodeOption").append(new Option(item.itemCode, item.itemCode));
+                console.log("Successfully loaded item codes");
+            });
+        }
+    };
+    http.open("GET", "http://localhost:8081/posSystem/item", true);
+    http.send();
+}
+
+/*document.getElementById('itemCodeOption').addEventListener('change', function() {
+    const selectedItemCode = this.value;
+    const selectedItem = itemData.find(item => item.itemCode === selectedItemCode);
+
+    if (selectedItem) {
+        document.getElementById('set-order-form-item-name').value = selectedItem.itemName;
+        document.getElementById('set-order-form-item-price').value = selectedItem.unitPrice;
+        document.getElementById('set-item-qty-on-hand').value = selectedItem.qtyOnHand;
+    }
+});
+
+function loadCustomerIDs() {
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if (http.readyState === 4 && http.status === 200) {
+            customerData = JSON.parse(http.responseText);
+            customerData.forEach((customer) => {
+                $("#custIdOption").append(new Option(customer.customerId, customer.customerId));
+                console.log("Successfully loaded customer IDs");
+            });
+        }
+    };
+    http.open("GET", "http://localhost:8081/posSystem/customer", true);
+    http.send();
+}
+
+document.getElementById('custIdOption').addEventListener('change', function() {
+    const selectedCustomerId = this.value;
+    const selectedCustomer = customerData.find(customer => customer.customerId === selectedCustomerId);
+
+    if (selectedCustomer) {
+        document.getElementById('set-customer-name').value = selectedCustomer.name;
+        document.getElementById('set-customer-email').value = selectedCustomer.email;
+    }
+});
+
+document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+    const itemCode = document.getElementById('itemCodeOption').value;
+    const itemName = document.getElementById('set-order-form-item-name').value;
+    const itemPrice = parseFloat(document.getElementById('set-order-form-item-price').value); // changed from unitPrice to itemPrice
+    const qtyOnHand = parseInt(document.getElementById('set-item-qty-on-hand').value, 10);
+    const qty = parseInt(document.getElementById('order-form-get-qty').value, 10);
+
+    // Ensure all values are defined and valid before proceeding
+    if (!itemCode || !itemName || isNaN(itemPrice) || isNaN(qty) || qty <= 0 || qty > qtyOnHand) {
+        alert('Please fill in all fields correctly and ensure quantity is within stock.');
+        return;
+    }
+
+    const total = (itemPrice * qty).toFixed(2);
+
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                console.log('Item quantity updated successfully in the database');
+
+                items.push({
+                    itemCode: itemCode,
+                    itemName: itemName,
+                    price: itemPrice, // changed from unitPrice to itemPrice
+                    qtyOnHand: qtyOnHand - qty,
+                    qty: qty,
+                    total: parseFloat(total)
+                });
+
+                const itemIndex = itemData.findIndex(item => item.itemCode === itemCode);
+                if (itemIndex !== -1) {
+                    itemData[itemIndex].qtyOnHand -= qty;
+                }
+
+                populateItemTable();
+                document.querySelector('form').reset();
+                document.getElementById('itemCodeOption').focus();
+                updateTotal();
+            } else {
+                alert('Failed to update item quantity in the database');
+            }
+        }
+    };
+
+    xhr.open("PUT", `http://localhost:8081/posSystem/item?itemCode=${itemCode}`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        qtyOnHand: qtyOnHand - qty,
+        itemName: itemName,
+        unitPrice: itemPrice // changed from unitPrice to itemPrice
+    }));
+});
+
+
+function populateItemTable() {
+    const tbody = $('#item-order-table tbody');
+    tbody.empty();
+
+    items.forEach(item => {
+        tbody.append(`
+            <tr>
+                <td>${item.itemCode}</td>
+                <td>${item.itemName}</td>
+                <td>${item.price.toFixed(2)}</td>
+                <td>${item.qtyOnHand}</td>
+                <td>${item.qty}</td>
+                <td>${item.total.toFixed(2)}</td>
+            </tr>
+        `);
+    });
+}
+
+function updateTotal() {
+    let totalVal = 0;
+    items.forEach(item => {
+        totalVal += item.total
+    });
+
+    $('#total').val(totalVal.toFixed(2));
+    updateSubTotal();
+}
+
+function updateSubTotal() {
+    const total = parseFloat($('#total').val()) || 0;
+    const discount = parseFloat($('#discount').val()) || 0;
+    const subTotal = total - (total * discount / 100);
+    $('#sub-total').val(subTotal.toFixed(2));
+}
+
+$('#discount').on('input', updateSubTotal);
+
+$('#cash').on('input', function() {
+    const subTotal = parseFloat($('#sub-total').val()) || 0;
+    const cash = parseFloat($(this).val()) || 0;
+    const balance = cash - subTotal;
+    $('#balance').val(balance.toFixed(2));
+});
+
+document.getElementById('item-order-table').addEventListener('click', function(e) {
+    if (e.target && e.target.matches('tr')) {
+        const row = e.target;
+        const cells = row.getElementsByTagName('td');
+
+        document.getElementById('itemCodeOption').value = cells[0].textContent;
+        document.getElementById('set-order-form-item-name').value = cells[1].textContent;
+        document.getElementById('set-order-form-item-price').value = cells[2].textContent;
+        document.getElementById('set-item-qty-on-hand').value = cells[3].textContent;
+        document.getElementById('order-form-get-qty').value = cells[4].textContent;
+    }
+});
+
+document.getElementById('remove-item-btn').addEventListener('click', function() {
+    const itemCode = document.getElementById('itemCodeOption').value;
+    if (itemCode) {
+        const itemIndex = items.findIndex(item => item.itemCode === itemCode);
+        if (itemIndex !== -1) {
+            const removedItem = items.splice(itemIndex, 1)[0];
+            const itemInData = itemData.find(item => item.itemCode === removedItem.itemCode);
+            if (itemInData) {
+                itemInData.qtyOnHand += removedItem.qty;
+            }
+            populateItemTable();
+            updateTotal();
+        }
+    }
+});
+
+document.getElementById('btn-purchase').addEventListener('click', function() {
+    const orderId = document.getElementById('order-id').value;
+    const orderDate = document.getElementById('order-date').value;
+    const customerId = document.getElementById('custIdOption').value;
+    const discount = parseFloat(document.getElementById('discount').value) || 0;
+    const cash = parseFloat(document.getElementById('cash').value) || 0;
+    const total = parseFloat(document.getElementById('total').value) || 0;
+    const subTotal = parseFloat(document.getElementById('sub-total').value) || 0;
+    const balance = parseFloat(document.getElementById('balance').value) || 0;
+
+    const orderData = {
+        orderId: orderId,
+        orderDate: orderDate,
+        customerId: customerId,
+        discount: discount,
+        cash: cash,
+        total: total,
+        subTotal: subTotal,
+        balance: balance,
+        items: items
+    };
+
+    fetch('http://localhost:8081/posSystem/order', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderData)
+    })
+        .then(response => response.text())
+        .then(message => {
+            alert(message);
+            // Optionally reset form or perform other actions
+        })
+        .catch(error => console.error('Error:', error));
+});*/
 
 
 
