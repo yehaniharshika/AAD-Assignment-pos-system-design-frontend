@@ -20,9 +20,19 @@ function generateCustomerId() {
 }
 /*load when page is start*/
 window.addEventListener('load', () => {
-   /* generateCustomerId();*/
+    fetchCustomerId();
     fetchCustomerData();
 });
+
+function fetchCustomerId() {
+    fetch("http://localhost:8081/posSystem/customer?action=generateCustomerId")
+        .then(response => response.json())
+        .then(customerId => {
+            document.getElementById("customer-Id").value = customerId;
+            console.log(customerId);
+        })
+        .catch(error => console.error("Error fetching customer Id ", error));
+}
 
 /*save customer*/
 $("#customer-save").click(function (){
@@ -100,6 +110,7 @@ $("#customer-save").click(function (){
                 );
                 fetchCustomerData();
                 clearFields();
+                fetchCustomerId();
                 console.log("load tables saved click");
             } else {
                 console.log("failed");
@@ -189,6 +200,8 @@ $("#customer-update").on('click', () => {
                     'success'
                 )
                 fetchCustomerData();
+                clearFields();
+                fetchCustomerId();
             } else {
                 console.log("Failed to update");
                 console.log("HTTP Status: ", http.status);
@@ -224,6 +237,8 @@ $("#customer-delete").on('click', () => {
                     'success'
                 );
                 fetchCustomerData();
+                clearFields();
+                fetchCustomerId();
             } else {
                 console.log("Failed to delete");
                 console.log("HTTP Status: ", http.status);
