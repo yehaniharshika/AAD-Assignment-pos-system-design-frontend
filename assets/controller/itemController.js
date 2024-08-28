@@ -2,32 +2,22 @@
 const itemNameRegexPattern = new RegExp("[A-Za-z\\s]{3,}");
 const  qtyOnHandRegexPattern = new RegExp("^\\d+$");
 
-/*function generateItemCode() {
-    // Retrieve the last item code from local storage or set to 'I000' if it doesn't exist
-    let lastItemCode = localStorage.getItem('lastItemCode') || 'I000';
-
-    // Extract the numeric part of the last item code and increment it
-    let numericPart = parseInt(lastItemCode.substring(1)) + 1;
-
-    // Format the new item code to include leading zeros and a prefix 'I'
-    let newItemCode = 'I' + numericPart.toString().padStart(3, '0');
-
-    // Store the new item code in local storage for future reference
-    localStorage.setItem('lastItemCode', newItemCode);
-
-    // Insert the new item code into the #item-code text field
-    document.getElementById('item-code').value = newItemCode;
-
-    // Return the generated item code
-    return newItemCode;
-}*/
-
 
 // Call the function when the page loads or when you need to generate a new code
 window.addEventListener('load', () => {
     fetchItemData();
-    /*generateItemCode();*/
+    fetchItemCode();
 });
+
+function fetchItemCode() {
+    fetch("http://localhost:8081/posSystem/item?action=generateItemCode")
+        .then(response => response.json())
+        .then(itemCode => {
+            document.getElementById("item-code").value = itemCode;
+            console.log(itemCode);
+        })
+        .catch(error => console.error("Error fetching item Code ", error));
+}
 /*save item*/
 $("#item-save").on('click', () => {
     var itemCodeValue = $('#item-code').val();
@@ -85,7 +75,7 @@ $("#item-save").on('click', () => {
                 );
                 fetchItemData();
                 clearFields();
-                generateItemCode();
+                fetchItemCode();
 
                 // console.log("load tables saved click");
             } else {
@@ -156,6 +146,8 @@ $("#item-update").on('click', () => {
                     'success'
                 )
                 fetchItemData();
+                clearFields();
+                fetchItemCode();
             } else {
                 console.log("Failed to update");
                 console.log("HTTP Status: ", http.status);
@@ -184,6 +176,7 @@ $("#item-delete").on('click', () => {
                     'success'
                 );
                 fetchItemData();
+                fetchItemCode();
             } else {
                 console.log("Failed to delete");
                 console.log("HTTP Status: ", http.status);
