@@ -167,12 +167,12 @@ function updateSubTotal() {
 
 $('#discount').on('input', updateSubTotal);
 
-/*$('#cash').on('input', function() {
+$('#cash').on('input', function() {
     const subTotal = parseFloat($('#sub-total').val()) || 0;
     const cash = parseFloat($(this).val()) || 0;
     const balance = cash - subTotal;
     $('#balance').val(balance.toFixed(2));
-});*/
+});
 
 /*document.getElementById('item-order-table').addEventListener('click', function(e) {
     if (e.target && e.target.matches('tr')) {
