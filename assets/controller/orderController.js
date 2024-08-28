@@ -50,7 +50,7 @@ document.getElementById('itemCodeOption').addEventListener('change', function() 
     }
 });
 
-/*function loadCustomerIDs() {
+function loadCustomerIDs() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
@@ -65,6 +65,7 @@ document.getElementById('itemCodeOption').addEventListener('change', function() 
     http.send();
 }
 
+/*
 document.getElementById('custIdOption').addEventListener('change', function() {
     const selectedCustomerId = this.value;
     const selectedCustomer = customerData.find(customer => customer.customerId === selectedCustomerId);
@@ -238,7 +239,8 @@ document.getElementById('btn-purchase').addEventListener('click', function() {
             // Optionally reset form or perform other actions
         })
         .catch(error => console.error('Error:', error));
-});*/
+});
+*/
 
 
 
