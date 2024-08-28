@@ -174,7 +174,7 @@ $('#cash').on('input', function() {
     $('#balance').val(balance.toFixed(2));
 });
 
-/*document.getElementById('item-order-table').addEventListener('click', function(e) {
+document.getElementById('item-order-table').addEventListener('click', function(e) {
     if (e.target && e.target.matches('tr')) {
         const row = e.target;
         const cells = row.getElementsByTagName('td');
@@ -185,7 +185,7 @@ $('#cash').on('input', function() {
         document.getElementById('set-item-qty-on-hand').value = cells[3].textContent;
         document.getElementById('order-form-get-qty').value = cells[4].textContent;
     }
-});*/
+});
 /*
 document.getElementById('remove-item-btn').addEventListener('click', function() {
     const itemCode = document.getElementById('itemCodeOption').value;
