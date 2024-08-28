@@ -75,7 +75,7 @@ document.getElementById('custIdOption').addEventListener('change', function() {
     }
 });
 
-/*document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+document.getElementById('add-to-cart-btn').addEventListener('click', function() {
     const itemCode = document.getElementById('itemCodeOption').value;
     const itemName = document.getElementById('set-order-form-item-name').value;
     const itemPrice = parseFloat(document.getElementById('set-order-form-item-price').value); // changed from unitPrice to itemPrice
@@ -130,7 +130,7 @@ document.getElementById('custIdOption').addEventListener('change', function() {
 });
 
 
-function populateItemTable() {
+/*function populateItemTable() {
     const tbody = $('#item-order-table tbody');
     tbody.empty();
 
@@ -146,7 +146,7 @@ function populateItemTable() {
             </tr>
         `);
     });
-}
+}*/
 
 function updateTotal() {
     let totalVal = 0;
@@ -156,7 +156,7 @@ function updateTotal() {
 
     $('#total').val(totalVal.toFixed(2));
     updateSubTotal();
-}*/
+}
 
 // function updateSubTotal() {
 //     const total = parseFloat($('#total').val()) || 0;
