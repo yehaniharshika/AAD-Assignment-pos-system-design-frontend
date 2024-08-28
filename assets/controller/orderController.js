@@ -250,7 +250,7 @@ document.getElementById('btn-purchase').addEventListener('click', function() {
 
 });
 
-/*function fetchOrderData() {
+function fetchOrderData() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4) {
@@ -265,7 +265,7 @@ document.getElementById('btn-purchase').addEventListener('click', function() {
     };
     http.open("GET", "http://localhost:8081/posSystem/order", true);
     http.send();
-}*/
+}
 
 function loadTable(orderData) {
     const tbody = $("#item-details-table tbody");
