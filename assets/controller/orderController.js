@@ -65,7 +65,6 @@ function loadCustomerIDs() {
     http.send();
 }
 
-/*
 document.getElementById('custIdOption').addEventListener('change', function() {
     const selectedCustomerId = this.value;
     const selectedCustomer = customerData.find(customer => customer.customerId === selectedCustomerId);
@@ -76,7 +75,7 @@ document.getElementById('custIdOption').addEventListener('change', function() {
     }
 });
 
-document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+/*document.getElementById('add-to-cart-btn').addEventListener('click', function() {
     const itemCode = document.getElementById('itemCodeOption').value;
     const itemName = document.getElementById('set-order-form-item-name').value;
     const itemPrice = parseFloat(document.getElementById('set-order-form-item-price').value); // changed from unitPrice to itemPrice
@@ -157,37 +156,37 @@ function updateTotal() {
 
     $('#total').val(totalVal.toFixed(2));
     updateSubTotal();
-}
+}*/
 
-function updateSubTotal() {
-    const total = parseFloat($('#total').val()) || 0;
-    const discount = parseFloat($('#discount').val()) || 0;
-    const subTotal = total - (total * discount / 100);
-    $('#sub-total').val(subTotal.toFixed(2));
-}
-
-$('#discount').on('input', updateSubTotal);
-
-$('#cash').on('input', function() {
-    const subTotal = parseFloat($('#sub-total').val()) || 0;
-    const cash = parseFloat($(this).val()) || 0;
-    const balance = cash - subTotal;
-    $('#balance').val(balance.toFixed(2));
-});
-
-document.getElementById('item-order-table').addEventListener('click', function(e) {
-    if (e.target && e.target.matches('tr')) {
-        const row = e.target;
-        const cells = row.getElementsByTagName('td');
-
-        document.getElementById('itemCodeOption').value = cells[0].textContent;
-        document.getElementById('set-order-form-item-name').value = cells[1].textContent;
-        document.getElementById('set-order-form-item-price').value = cells[2].textContent;
-        document.getElementById('set-item-qty-on-hand').value = cells[3].textContent;
-        document.getElementById('order-form-get-qty').value = cells[4].textContent;
-    }
-});
-
+// function updateSubTotal() {
+//     const total = parseFloat($('#total').val()) || 0;
+//     const discount = parseFloat($('#discount').val()) || 0;
+//     const subTotal = total - (total * discount / 100);
+//     $('#sub-total').val(subTotal.toFixed(2));
+// }
+//
+// $('#discount').on('input', updateSubTotal);
+//
+// $('#cash').on('input', function() {
+//     const subTotal = parseFloat($('#sub-total').val()) || 0;
+//     const cash = parseFloat($(this).val()) || 0;
+//     const balance = cash - subTotal;
+//     $('#balance').val(balance.toFixed(2));
+// });
+//
+// document.getElementById('item-order-table').addEventListener('click', function(e) {
+//     if (e.target && e.target.matches('tr')) {
+//         const row = e.target;
+//         const cells = row.getElementsByTagName('td');
+//
+//         document.getElementById('itemCodeOption').value = cells[0].textContent;
+//         document.getElementById('set-order-form-item-name').value = cells[1].textContent;
+//         document.getElementById('set-order-form-item-price').value = cells[2].textContent;
+//         document.getElementById('set-item-qty-on-hand').value = cells[3].textContent;
+//         document.getElementById('order-form-get-qty').value = cells[4].textContent;
+//     }
+// });
+/*
 document.getElementById('remove-item-btn').addEventListener('click', function() {
     const itemCode = document.getElementById('itemCodeOption').value;
     if (itemCode) {
@@ -239,8 +238,7 @@ document.getElementById('btn-purchase').addEventListener('click', function() {
             // Optionally reset form or perform other actions
         })
         .catch(error => console.error('Error:', error));
-});
-*/
+});*/
 
 
 
