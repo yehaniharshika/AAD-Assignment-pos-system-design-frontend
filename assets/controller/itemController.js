@@ -1,9 +1,32 @@
+/*import {item_db} from "../db/db.js";*/
 const itemNameRegexPattern = new RegExp("[A-Za-z\\s]{3,}");
 const  qtyOnHandRegexPattern = new RegExp("^\\d+$");
 
+/*function generateItemCode() {
+    // Retrieve the last item code from local storage or set to 'I000' if it doesn't exist
+    let lastItemCode = localStorage.getItem('lastItemCode') || 'I000';
+
+    // Extract the numeric part of the last item code and increment it
+    let numericPart = parseInt(lastItemCode.substring(1)) + 1;
+
+    // Format the new item code to include leading zeros and a prefix 'I'
+    let newItemCode = 'I' + numericPart.toString().padStart(3, '0');
+
+    // Store the new item code in local storage for future reference
+    localStorage.setItem('lastItemCode', newItemCode);
+
+    // Insert the new item code into the #item-code text field
+    document.getElementById('item-code').value = newItemCode;
+
+    // Return the generated item code
+    return newItemCode;
+}*/
+
+
+// Call the function when the page loads or when you need to generate a new code
 window.addEventListener('load', () => {
-    /* generateCustomerId();*/
     fetchItemData();
+    /*generateItemCode();*/
 });
 /*save item*/
 $("#item-save").on('click', () => {
@@ -61,7 +84,9 @@ $("#item-save").on('click', () => {
                     'success'
                 );
                 fetchItemData();
-                // clearFields();
+                clearFields();
+                generateItemCode();
+
                 // console.log("load tables saved click");
             } else {
                 console.log("failed");
@@ -208,6 +233,12 @@ function loadTable(itemData) {
     });
 }
 
+function clearFields() {
+    $("#item-code").val('');
+    $("#item-name").val('');
+    $("#unit-price").val('');
+    $("#qty-on-hand").val('');
+}
 
 $("#item-tbl-tbody").on('click', 'tr', function() {
     let itemCode = $(this).find(".item-code-value").text();
@@ -282,39 +313,9 @@ $("#item-search").on('click', () => {
     http.send();
 });
 
-/*function generateItemCode() {
-    let highestItemCode = 0;
-
-    // Find the highest numeric part of existing customer IDs
-    for (let i = 0; i < item_db.length; i++) {
-        const numericPart = parseInt(item_db[i].itemCode.split('-')[1]);
-        if (!isNaN(numericPart) && numericPart > highestItemCode) {
-            highestItemCode = numericPart;
-        }
-    }
-
-    // Generate a new item code by incrementing the highest numeric part
-    const newItemCode = highestItemCode + 1;
-
-    // Insert the new item code into the #customer-id text field
-    $('#item-code').val('I00-00' + newItemCode);
-
-    // Return the generated customer ID
-    return 'I00-00' + newItemCode;
-}*/
 
 
-/*/!*Auto-generate the item code when navigating to the main section*!/
-function populateItemCodeField() {
-    const itemCodeField = document.getElementById('item-code');
-    const generatedItemCode = generateItemCode();
-    itemCodeField.value = generatedItemCode;
-}
 
-// Event listener for when the page loads
-window.addEventListener('load', function() {
-    populateItemCodeField();
-});*/
 
 
 
