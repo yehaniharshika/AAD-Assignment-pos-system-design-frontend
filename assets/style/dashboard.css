@@ -9,7 +9,7 @@ html{
 }
 
 #logo-name{
-    font-family: Ubuntu;
+    font-family: "Ubuntu", sans-serif;
     font-size: 18px;
     font-weight: bold;
     color: red;
@@ -77,7 +77,7 @@ header{
 }
 .cus-card-style {
     color: white;
-    font-family: Ubuntu;
+    font-family: "Ubuntu", sans-serif;
 }
 
 .count-card-style {

@@ -8,7 +8,7 @@ html{
 }
 
 #logo-name{
-    font-family: Ubuntu;
+    font-family: "Ubuntu", sans-serif;
     font-size: 18px;
     font-weight: bold;
     color: red;
