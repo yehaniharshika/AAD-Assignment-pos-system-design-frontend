@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&display=swap" rel="stylesheet">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -117,7 +117,7 @@
         </div>
 
         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
-            <div class="card card-size count-card-style ">
+            <div data-aos="flip-left" class="card card-size count-card-style ">
                 <div class="card-body">
                     <h2 class="card-title text-center cus-card-style">Customer count</h2>
                     <br>
@@ -128,7 +128,7 @@
         </div>
 
         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
-            <div class="card card-size count-card-style ">
+            <div data-aos="flip-left" class="card card-size count-card-style ">
                 <div class="card-body">
                     <h2 class="card-title text-center cus-card-style">Item count</h2>
                     <br>
@@ -139,7 +139,7 @@
         </div>
 
         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
-            <div class="card card-size count-card-style ">
+            <div data-aos="flip-left" class="card card-size count-card-style ">
                 <div class="card-body">
                     <h2 class="card-title text-center cus-card-style">Today Income</h2>
                     <br>
@@ -156,7 +156,9 @@
 <section class="main-part container" id="customer-section">
     <section class="row">
         <section class="Customer_Details_Form col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-            <div class="card cardSize">
+            <div data-aos="flip-left"
+                 data-aos-easing="ease-out-cubic"
+                 data-aos-duration="3000" class="card cardSize">
                 <div id="Card-Header-back-colour" class="card-header">
                     Customer Details
                 </div>
@@ -446,11 +448,10 @@
 <section class="main-part container" id="order-details-section">
     <section class="row">
         <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+            <div class="text-center gradient-text">
+                <h3>Order Details Form</h3>
+            </div>
             <div id="form">
-                <div class="text-center gradient-text">
-                    <h3>Order Details Form</h3>
-                </div>
-
                 <div class="col table1">
                     <table class="table" id="item-details-table">
                         <thead class="table-primary">
@@ -473,11 +474,16 @@
         </section>
     </section>
 </section>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="assets/lib/jquery-3.7.1.min.js"></script>
 <script type="module" src="assets/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 <script type="module" src="assets/controller/customerController.js"></script>
 <script type="module" src="assets/controller/itemController.js"></script>
 <script type="module" src="assets/controller/orderController.js"></script>

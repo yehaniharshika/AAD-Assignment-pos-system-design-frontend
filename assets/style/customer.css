@@ -19,6 +19,10 @@ header {
     margin-right: 20px;
 }
 
+#customer-Id{
+    font-weight: bold;
+}
+
 #logo-name{
     font-family: "Ubuntu", sans-serif;
     font-size: 18px;

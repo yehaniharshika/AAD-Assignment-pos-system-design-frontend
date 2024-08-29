@@ -10,6 +10,7 @@ html{
 #logo-name {
     color: orangered;
     margin: 0 5px;
+    font-weight: bold;
 }
 
 header {
@@ -26,8 +27,6 @@ header {
 .main-header {
     margin: 1rem 0;
 }
-
-
 
 .Card-header-colour {
     background-color: #133a75;
@@ -62,10 +61,12 @@ header {
 
 #sub-total-label {
     color: red;
+    font-weight: 700;
 }
 
 #total-label {
     color: blue;
+    font-weight: 800;
 }
 
 .Order-Table-View {
@@ -93,6 +94,10 @@ header {
 
 #invoice-details-header{
     color: white;
+}
+
+#order-id{
+    font-weight: bold;
 }
 
 .search-order{
